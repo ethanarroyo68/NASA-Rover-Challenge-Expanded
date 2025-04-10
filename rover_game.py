@@ -25,9 +25,6 @@ while running:
     # Fill the screen with white
     screen.fill(WHITE)
 
-    # Draw a red rectangle
-    pygame.draw.rect(screen, RED, (100, 100, 200, 150))
-
     # Update the display
     pygame.display.flip()
 
