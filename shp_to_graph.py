@@ -22,10 +22,12 @@ def shp_to_graph(shapefile):
     # Create an empty graph and add edges (nodes are automatically added)
     G = nx.Graph()
     G.add_edges_from(
-        (row.start, row.end, {"weight": row.geometry.length})
+        (row.start, row.end, {
+            "weight": row.geometry.length,
+            "geometry": list(row.geometry.coords)  # This stores all intermediate points
+        })
         for row in gdf.itertuples(index=False)
     )
-    
     return G
 
 def visualize_graph(G):

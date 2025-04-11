@@ -7,16 +7,26 @@ class Shapefile:
         self.bounding_box = self.shapefile.total_bounds
 
 
-    def get_bounding_box(self):
-        min_x, min_y, max_x, max_y = self.bounding_box # Uses stored value
+    def get_bounding_box(self, buffer_ratio=0.05):
+        min_x, min_y, max_x, max_y = self.bounding_box
+
+        width = max_x - min_x
+        height = max_y - min_y
+
+        buffer_x = width * buffer_ratio
+        buffer_y = height * buffer_ratio
+
         return {
-            "min_x": min_x,
-            "max_x": max_x,
-            "min_y": min_y,
-            "max_y": max_y,
-            "width": max_x - min_x,
-            "height": max_y - min_y
+            "min_x": min_x - buffer_x,
+            "max_x": max_x + buffer_x,
+            "min_y": min_y - buffer_y,
+            "max_y": max_y + buffer_y,
+            "true_width": width,
+            "true_height": height,
+            "width": (max_x - min_x) + 2 * buffer_x,
+            "height": (max_y - min_y) + 2 * buffer_y
         }
+
 
     def get_filepath(self):
         return self.shapefile_path  # Returns the filepath of the shapefile
