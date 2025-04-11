@@ -1,35 +1,19 @@
-from shapefile_class import Shapefile
-from shp_to_graph import shp_to_graph
-from renderer import Renderer
-import pygame
-from shp_visualizer import get_render_lines  # assuming your line-prep logic is here
+from graph_processor import GraphProcessor
+from visualizer import Visualizer
 
 def main():
-    # Path to shapefile
+    # Configuration
     shapefile_path = 'South_Clear_Creek_Roads.shp'
     screen_width = 600
     screen_height = 800
 
-    # Initialize the shapefile class and load the shapefile
-    shapefile = Shapefile(shapefile_path)
+    # Initialize GraphProcessor
+    graph_processor = GraphProcessor(shapefile_path)
+    graph, bounds = graph_processor.process_graph()
 
-    # Use the shp_to_graph method to convert the shapefile to a graph
-    graph = shp_to_graph(shapefile)
-    bounds = shapefile.get_bounding_box(buffer_ratio=0.05)  # tweak % if needed
-
-    lines = get_render_lines(graph, bounds, screen_width, screen_height)
-
-    renderer = Renderer(screen_width, screen_height)
-    running = True
-
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        renderer.draw(lines)
-
-    renderer.quit()
+    # Initialize Visualizer
+    visualizer = Visualizer(screen_width, screen_height)
+    visualizer.run(graph, bounds)
 
 if __name__ == "__main__":
     main()
