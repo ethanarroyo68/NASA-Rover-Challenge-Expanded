@@ -3,6 +3,7 @@ This file provides utility functions for translating graph elements into visual 
 
 Key Functions:
 - map_to_screen: Maps spatial coordinates to screen coordinates based on bounds and screen dimensions.
+- screen_to_map: Maps screen coordinates to spatial coordinates based on bounds and screen dimensions.
 - get_render_lines: Converts graph edges into drawable screen lines.
 
 Usage Notes:
@@ -18,6 +19,15 @@ def map_to_screen(bounds, x, y, screen_width, screen_height):
     screen_x = int(norm_x * screen_width)
     screen_y = int((1 - norm_y) * screen_height)  # Y flip for Pygame
     return screen_x, screen_y
+
+def screen_to_map(bounds, screen_x, screen_y, screen_width, screen_height):
+    bbox = bounds
+    norm_x = screen_x / screen_width
+    norm_y = 1 - (screen_y / screen_height)  # Undo Y flip
+
+    x = norm_x * (bbox['max_x'] - bbox['min_x']) + bbox['min_x']
+    y = norm_y * (bbox['max_y'] - bbox['min_y']) + bbox['min_y']
+    return x, y
 
 def get_render_lines(G, bounds, screen_width, screen_height):
     lines = []

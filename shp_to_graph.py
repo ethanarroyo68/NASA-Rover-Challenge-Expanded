@@ -3,7 +3,6 @@ This file provides functions for converting shapefiles into NetworkX graphs and 
 
 Key Functions:
 - shp_to_graph: Converts a shapefile into a NetworkX graph.
-- visualize_graph: Displays the graph using Matplotlib.
 
 Usage Notes:
 - Ensure the input shapefile is properly formatted and contains geometry data.
@@ -29,8 +28,3 @@ def shp_to_graph(shapefile):
         for row in gdf.itertuples(index=False)
     )
     return G
-
-def visualize_graph(G):
-    """Visualize the provided NetworkX graph."""
-    nx.draw(G, with_labels=True)
-    plt.show()

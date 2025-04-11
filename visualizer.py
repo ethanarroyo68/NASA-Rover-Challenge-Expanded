@@ -24,6 +24,8 @@ class Visualizer:
                 if event.type == pygame.QUIT:
                     running = False
 
-            self.renderer.draw(lines)
+            self.renderer.screen.fill(self.renderer.background_color) # Necessary?
+            self.renderer.draw_rulers(bounds)
+            self.renderer.draw_paths(lines)
 
         self.renderer.quit()
