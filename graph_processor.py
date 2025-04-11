@@ -1,3 +1,12 @@
+"""
+This file provides the GraphProcessor class, which integrates the Shapefile and graph processing logic.
+
+Key Classes:
+- GraphProcessor: Handles the conversion of shapefiles into graphs and computes bounding boxes.
+
+Usage Notes:
+- Use the `process_graph` method to generate the graph and its bounds.
+"""
 from shapefile_class import Shapefile
 from shp_to_graph import shp_to_graph
 

@@ -1,3 +1,12 @@
+"""
+This file provides the Shapefile class, which wraps around GeoPandas for shapefile handling.
+
+Key Classes:
+- Shapefile: Reads a shapefile and provides utilities like bounding box computation.
+
+Usage Notes:
+- Ensure the shapefile path provided is valid and accessible.
+"""
 import geopandas as gpd
 
 class Shapefile:

@@ -1,3 +1,13 @@
+"""
+This file provides utility functions for translating graph elements into visual renderings.
+
+Key Functions:
+- map_to_screen: Maps spatial coordinates to screen coordinates based on bounds and screen dimensions.
+- get_render_lines: Converts graph edges into drawable screen lines.
+
+Usage Notes:
+- Use the `map_to_screen` function for individual point mappings and `get_render_lines` for bulk edge conversions.
+"""
 # Functions for the translation of graph elements to visual renderings
 
 def map_to_screen(bounds, x, y, screen_width, screen_height):
@@ -21,4 +31,3 @@ def get_render_lines(G, bounds, screen_width, screen_height):
             lines.append(((sx1, sy1), (sx2, sy2)))
 
     return lines
-

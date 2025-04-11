@@ -1,17 +1,17 @@
+"""
+This file provides functions for converting shapefiles into NetworkX graphs and visualizing them.
+
+Key Functions:
+- shp_to_graph: Converts a shapefile into a NetworkX graph.
+- visualize_graph: Displays the graph using Matplotlib.
+
+Usage Notes:
+- Ensure the input shapefile is properly formatted and contains geometry data.
+"""
 import networkx as nx
 import matplotlib.pyplot as plt
 
 def shp_to_graph(shapefile):
-    """
-    Convert a Shapefile instance into a NetworkX graph.
-    
-    Parameters:
-        shapefile: An instance of the Shapefile class (which contains a GeoDataFrame as `shapefile.shapefile`).
-        
-    Returns:
-        G: A NetworkX graph where nodes are start and end coordinates of each geometry,
-           and edges are added with a weight equal to the length of the geometry.
-    """
     # Get the GeoDataFrame from the shapefile instance
     gdf = shapefile.shapefile.copy()
     

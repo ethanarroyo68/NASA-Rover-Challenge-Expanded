@@ -1,3 +1,12 @@
+"""
+This file provides the Renderer class, which is responsible for rendering graphical elements on a Pygame window.
+
+Key Classes:
+- Renderer: Manages screen initialization, background color setup, and drawing lines.
+
+Usage Notes:
+- Use the `draw` method to render lines and the `quit` method to close the Pygame window.
+"""
 import pygame
 
 class Renderer:
