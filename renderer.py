@@ -22,11 +22,10 @@ class Renderer:
         self.screen_height = screen_height
 
     def draw_paths(self, lines):
-        self.screen.fill(self.background_color)
         for (start, end) in lines:
             pygame.draw.line(self.screen, self.line_color, start, end, width=1)
         pygame.display.flip()
-
+    """
     def draw_rulers(self, bounds, tick_spacing=100):
         font = pygame.font.SysFont(None, 16)
         ruler_color = (0, 0, 0)
@@ -45,7 +44,7 @@ class Renderer:
             _, map_y = screen_to_map(bounds, 0, y, self.screen_width, self.screen_height)
             label = font.render(str(int(map_y)), True, text_color)
             self.screen.blit(label, (6, y - 6))  # offset right of tick
-        
+    """
 
     def quit(self):
         pygame.quit()
